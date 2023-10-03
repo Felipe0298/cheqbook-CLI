@@ -1,17 +1,24 @@
-/**
- * @format
- */
-
-import 'react-native';
+import 'react-native-gesture-handler';
 import React from 'react';
-import App from '../App';
+import { render } from '@testing-library/react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { StackNavigator } from '../src/navigator/StackNavigator';
 
-// Note: import explicitly to use the types shiped with jest.
-import {it} from '@jest/globals';
+test('App renders correctly', () => {
+  const {} = render(
+    <NavigationContainer>
+      <StackNavigator />
+    </NavigationContainer>
+  );
+});
 
-// Note: test renderer must be required after react-native.
-import renderer from 'react-test-renderer';
+test('App starts on HomeScreen with CheqbookLogoHeader', () => {
+  const { getByTestId } = render(
+    <NavigationContainer>
+      <StackNavigator />
+    </NavigationContainer>
+  );
 
-it('renders correctly', () => {
-  renderer.create(<App />);
+  const cheqbookLogoHeaderElement = getByTestId('cheqbook-logo');
+  expect(cheqbookLogoHeaderElement).toBeDefined();
 });
