@@ -11,8 +11,8 @@ test('navigates to LoginScreen when pressing Log In', () => {
   // Find the "Log In" button
   const button = getByText('Log In');
 
-  // Verify that the "LoginScreen" is not visible at the beginning
-  expect(queryByText('LoginScreen')).toBeNull();
+  // Verify that the LoginScreen is not visible at the beginning
+  expect(queryByText('Forgot password?')).toBeNull();
 
   // Simulate a press event on the button wrapped in act
   act(() => {
@@ -20,7 +20,7 @@ test('navigates to LoginScreen when pressing Log In', () => {
   });
 
   // Verify that the "LoginScreen" is visible after pressing the button
-  expect(getByText('LoginScreen')).toBeTruthy();
+  expect(getByText('Forgot password?')).toBeTruthy();
 });
 
 test('navigates to SignUpScreen when pressing SignUp Free', () => {
@@ -29,7 +29,7 @@ test('navigates to SignUpScreen when pressing SignUp Free', () => {
   // Find the "Sign Up Free" button
   const button = getByText('Sign Up Free');
 
-  // Verify that the "SignUpScreen" is not visible at the beginning
+  // Verify that the SignUpScreen is not visible at the beginning
   expect(queryByText('SignUpScreen')).toBeNull();
 
   // Simulate a press event on the button wrapped in act
@@ -37,8 +37,8 @@ test('navigates to SignUpScreen when pressing SignUp Free', () => {
     fireEvent.press(button);
   });
 
-  // Verify that the "SignUpScreen" is visible after pressing the button
-  expect(getByText('SignUpScreen')).toBeTruthy();
+  // Verify that the "footer text" is visible after pressing the button
+  expect(getByText('We guarantee 100% privacy. Your financial information will not be shared.')).toBeTruthy();
 });
 
 test('FlatListScreen changes information when swiping', () => {

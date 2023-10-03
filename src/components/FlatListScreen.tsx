@@ -25,7 +25,7 @@ const FlatListScreen = () => {
   ];
 
   return (
-    <View style={styles.container}>
+    <View style={styles.container} testID='flat-list'>
       <FlatList
         data={slides}
         horizontal

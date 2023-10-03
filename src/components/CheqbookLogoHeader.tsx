@@ -23,7 +23,7 @@ const CheqbookLogoHeader: React.FC<LogoHeaderProps> = ({ logoWidthPercentage, st
   }, []);
 
   return (
-    <View style={[styles.container, style]}>
+    <View style={[styles.container, style]} testID='cheqbook-logo'>
       <Image
         source={logo}
         style={{ width: logoWidth, height: logoHeight, resizeMode: 'contain'}}
