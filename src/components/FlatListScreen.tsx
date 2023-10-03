@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { StyleSheet, Text, View, FlatList, Dimensions, Image } from 'react-native';
+import { StyleSheet, Text, View, FlatList, Image } from 'react-native';
+import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 
 const FlatListScreen = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -24,7 +25,7 @@ const FlatListScreen = () => {
   ];
 
   return (
-    <View style={styles.container} testID='flat-list'>
+    <View style={styles.container}>
       <FlatList
         data={slides}
         horizontal
@@ -32,7 +33,7 @@ const FlatListScreen = () => {
         keyExtractor={(item, index) => index.toString()}
         renderItem={({ item }) => (
           <View style={styles.slide}>
-            <Image source={item.image} style={styles.slideImage} />
+            <Image source={item.image} style={styles.slideImage} resizeMode="contain" />
             <View style={styles.textContainer}>
               <Text style={styles.slideText}>{item.text}</Text>
             </View>
@@ -40,15 +41,24 @@ const FlatListScreen = () => {
         )}
         onMomentumScrollEnd={(event) => {
           const offset = event.nativeEvent.contentOffset.x;
-          const index = Math.floor(offset / windowWidth);
+          const index = Math.round(offset / wp('100%'));
           handleSwipe(index);
         }}
       />
+      <View style={styles.paginationContainer}>
+        {slides.map((_, i) => (
+          <View
+            key={i}
+            style={[
+              styles.paginationDot,
+              currentIndex === i ? styles.activeDot : styles.inactiveDot,
+            ]}
+          />
+        ))}
+      </View>
     </View>
   );
 };
-
-const windowWidth = Dimensions.get('window').width;
 
 const styles = StyleSheet.create({
   container: {
@@ -57,25 +67,42 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   slide: {
-    width: windowWidth,
+    width: wp('100%'),
     justifyContent: 'center',
     alignItems: 'center',
   },
   slideImage: {
-    width: 200,
-    height: 200,
+    width: wp('50%'), 
   },
   textContainer: {
     position: 'absolute',
-    bottom: 30,
+    bottom: hp('3.75%'), 
     left: 0,
     right: 0,
     justifyContent: 'center',
     alignItems: 'center',
   },
   slideText: {
-    fontSize: 18,
+    fontSize: hp('2.25%'), 
     textAlign: 'center',
+    fontWeight:'700'
+  },
+  paginationContainer: {
+    flexDirection: 'row',
+    position: 'absolute',
+    bottom: hp('1%'),
+  },
+  paginationDot: {
+    width: wp('2%'),
+    height: wp('2%'),
+    borderRadius: wp('1%'),
+    marginHorizontal: wp('2%'),
+  },
+  activeDot: {
+    backgroundColor: 'black',
+  },
+  inactiveDot: {
+    backgroundColor: 'gray',
   },
 });
 
