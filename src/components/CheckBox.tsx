@@ -63,7 +63,8 @@ const styles = StyleSheet.create({
     flexWrap: 'wrap',
     flex: 1,
     textAlign: 'justify',
-    fontWeight:'700'
+    fontWeight:'700',
+    color: 'black'
   },
 });
 
