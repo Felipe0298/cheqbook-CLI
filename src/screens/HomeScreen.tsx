@@ -2,10 +2,12 @@ import React from 'react';
 import { StackScreenProps } from '@react-navigation/stack';
 import { View, StyleSheet, Text, TouchableOpacity } from 'react-native';
 import FlatListScreen from '../components/FlatListScreen';
+import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
+
 
 interface Props extends StackScreenProps<any, any> {}
 
-export const HomeScreen = ({ navigation, route }: Props) => {
+export const HomeScreen = ({ navigation }: Props) => {
   return (
     <View style={styles.container}>
 
@@ -16,13 +18,13 @@ export const HomeScreen = ({ navigation, route }: Props) => {
       <View style={styles.buttonContainer}>
         <TouchableOpacity
           onPress={() => navigation.navigate('LoginScreen')}
-          style={styles.login}
+          style={styles.buttons}
           activeOpacity={0.5}>
           <Text style={styles.text}>Log In</Text>
         </TouchableOpacity>
         <TouchableOpacity
           onPress={() => navigation.navigate('SignUpScreen')}
-          style={styles.signup}
+          style={styles.buttons}
           activeOpacity={0.5}>
           <Text style={styles.text}>Sign Up Free</Text>
         </TouchableOpacity>
@@ -44,29 +46,21 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-evenly',
     alignItems: 'center',
-    paddingVertical: 20,
-    paddingHorizontal: 10,
+    paddingVertical: hp('2%'),
+    paddingHorizontal: wp('2%'),
   },
-  login: {
+  buttons: {
     backgroundColor: '#1e8536',
     borderRadius: 100,
-    height: 40,
+    height: hp('5%'),
     justifyContent: 'center',
     alignItems: 'center',
     flex: 1, 
-    marginHorizontal: 10, 
-  },
-  signup: {
-    backgroundColor: '#1e8536',
-    borderRadius: 100,
-    height: 40,
-    justifyContent: 'center',
-    alignItems: 'center',
-    flex: 1, 
-    marginHorizontal: 10, 
+    marginHorizontal: wp('2%'), 
+    marginBottom: hp('2%')
   },
   text: {
-    fontSize: 20,
+    fontSize: hp('2.5%'),
     color: 'white',
     textAlign: 'center',
   },
