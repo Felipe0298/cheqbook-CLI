@@ -28,12 +28,14 @@ export const LoginScreen = ({ navigation }: Props) => {
             <TextInput
               style={styles.input}
               selectionColor="gray"
+              testID='emailInput'
             />
             <Text style={styles.inputLabel}>Password</Text>
             <TextInput
               style={styles.input}
               secureTextEntry={true}
               selectionColor="gray"
+              testID='passwordInput'
             />
           </View>
 
@@ -118,7 +120,7 @@ export const LoginScreen = ({ navigation }: Props) => {
             <TouchableOpacity
               onPress={() => navigation.navigate('SignUpScreen')}
             >
-              <Text style={styles.signUpButton}>Sign up</Text>
+              <Text style={styles.signUpButton} testID='redirect-to-signup'>Sign up</Text>
             </TouchableOpacity>
           </View>
         </View>
