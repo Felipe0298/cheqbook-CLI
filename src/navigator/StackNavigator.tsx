@@ -4,13 +4,15 @@ import { HomeScreen } from '../screens/HomeScreen';
 import { LoginScreen } from '../screens/LoginScreen';
 import { SignUpScreen } from '../screens/SignUpScreen';
 import CheqbookLogoHeader from '../components/CheqbookLogoHeader';
+import { SecurityAndPrivacyPolicy } from '../screens/SecurityAndPrivacyPolicyScreen';
+import { TermsAndConditions } from '../screens/TermsAndConditionsScreen';
 
 const Stack = createStackNavigator();
 
 export function StackNavigator() {
   return (
     <Stack.Navigator
-      initialRouteName="HomeScreen" // Establecer HomeScreen como la pantalla inicial
+      initialRouteName="HomeScreen"
       screenOptions={{
         cardStyle: { backgroundColor: 'white' },
         headerStyle: {
@@ -30,8 +32,10 @@ export function StackNavigator() {
           ),
         }}
       />
-      <Stack.Screen name="LoginScreen" component={LoginScreen} options={{ headerShown: false }}/>
-      <Stack.Screen name="SignUpScreen" component={SignUpScreen} options={{ headerShown: false }}/>
+      <Stack.Screen name="LoginScreen" component={LoginScreen} options={{ headerShown: false }} />
+      <Stack.Screen name="SignUpScreen" component={SignUpScreen} options={{ headerShown: false }} />
+      <Stack.Screen name="SecurityAndPrivacyPolicy" component={SecurityAndPrivacyPolicy} />
+      <Stack.Screen name="TermsAndConditions" component={TermsAndConditions} />
     </Stack.Navigator>
   );
 }
