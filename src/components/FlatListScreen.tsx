@@ -85,7 +85,8 @@ const styles = StyleSheet.create({
   slideText: {
     fontSize: hp('2.25%'), 
     textAlign: 'center',
-    fontWeight:'700'
+    fontWeight:'700',
+    color:'black'
   },
   paginationContainer: {
     flexDirection: 'row',
@@ -93,8 +94,8 @@ const styles = StyleSheet.create({
     bottom: hp('1%'),
   },
   paginationDot: {
-    width: wp('2%'),
-    height: wp('2%'),
+    width: wp('2.5%'),
+    height: wp('2.5%'),
     borderRadius: wp('1%'),
     marginHorizontal: wp('2%'),
   },
